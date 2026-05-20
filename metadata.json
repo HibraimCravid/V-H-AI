@@ -1,0 +1,8 @@
+{
+  "name": "V&H AI",
+  "description": "Uma central de Inteligência Artificial avançada e futurista. Hub com chat, criação de conteúdo, geração de arte visual, conversão de texto-para-vocal, assistente de voz em tempo real e simulador de vídeo IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

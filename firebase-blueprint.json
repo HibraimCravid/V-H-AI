@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Perfil do usuário salvando foto, tema, wallpaper e preferências da IA.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "ID exclusivo do usuário do Firebase Authentication"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Nome visível do usuário"
+        },
+        "photoUrl": {
+          "type": "string",
+          "description": "URL da foto do perfil ou avatar de IA"
+        },
+        "theme": {
+          "type": "string",
+          "description": "Preferência de tema: 'light' ou 'dark' ou 'cyberpunk'"
+        },
+        "wallpaper": {
+          "type": "string",
+          "description": "Papel de parede personalizado: ID ou URL do wallpaper selecionado"
+        },
+        "aiModel": {
+          "type": "string",
+          "description": "Modelo de IA favorito atual (Gemini, Claude, OpenAI, DeepSeek, etc.)"
+        },
+        "voiceName": {
+          "type": "string",
+          "description": "Voz preferida para o assistente de voz (Kore, Zephyr, etc.)"
+        },
+        "language": {
+          "type": "string",
+          "description": "Idioma selecionado na central inteligente"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Última atualização do perfil"
+        }
+      },
+      "required": ["uid", "displayName"]
+    },
+    "ChatSession": {
+      "title": "ChatSession",
+      "description": "Sessão de chat contendo histórico de mensagens e parâmetros da conversação.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID único da conversa"
+        },
+        "userId": {
+          "type": "string",
+          "description": "ID do usuário associado"
+        },
+        "title": {
+          "type": "string",
+          "description": "Título resumido da conversa"
+        },
+        "aiModel": {
+          "type": "string",
+          "description": "Modelo de IA utilizado"
+        },
+        "category": {
+          "type": "string",
+          "description": "Sub-aplicativo: 'chat', 'content', 'image', 'video' ou 'voice'"
+        },
+        "messages": {
+          "type": "array",
+          "description": "Vetor com mensagens contendo role, content, timestamp e campos opcionais"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Momento da última mensagem"
+        }
+      },
+      "required": ["id", "userId", "messages", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Documentos do perfil do usuário para V&H AI"
+    },
+    "/chats/{chatId}": {
+      "schema": "ChatSession",
+      "description": "Sessões de conversa e histórico do usuário"
+    }
+  }
+}
